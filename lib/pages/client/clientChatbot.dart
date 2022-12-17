@@ -10,7 +10,7 @@ class clientChatbot extends StatefulWidget {
 }
 
 class _clientChatbotState extends State<clientChatbot> {
-  late DialogFlowtter dialogFlowtter;
+  // late DialogFlowtter dialogFlowtter;
   final TextEditingController messageController = TextEditingController();
 
   List<Map<String, dynamic>> messages = [];
@@ -18,7 +18,7 @@ class _clientChatbotState extends State<clientChatbot> {
   @override
   void initState() {
     super.initState();
-    DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
+    // DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
   }
 
   @override
@@ -122,7 +122,7 @@ class _clientChatbotState extends State<clientChatbot> {
 
       await Future.delayed(Duration(seconds: 1));
       setState(() {
-        addMessage(Message(text: DialogText(text: ['กรุณารอสักครู่...'])),
+        addMessage(Message(text: DialogText(text: ['กรุณารอสักครู่ระบบกำลังประมวณผล'])),
             false);
       });
       await Future.delayed(Duration(seconds: 3));
@@ -136,10 +136,10 @@ class _clientChatbotState extends State<clientChatbot> {
         bot_message = "สถานที่ท่องเที่ยวใกล้คุณ..";
         bot_message += "\n1.) Seacon Bangkae\n2.) เดอะมอลล์บางแค\n3.) เดอะมอลล์ท่าพระ";
       }
-      setState(() {
-        addMessage(Message(text: DialogText(text: [bot_message])),
-            false);
-      });
+      addMessage(Message(text: DialogText(text: [bot_message])),
+          false);
+
+      setState(() {});
     }
     catch (error) {
       Alert.show(context: context, msg: error.toString());
@@ -157,7 +157,8 @@ class _clientChatbotState extends State<clientChatbot> {
 
   @override
   void dispose() {
-    dialogFlowtter.dispose();
+    // ทำงานหลังปิด
+    // dialogFlowtter.dispose();
     super.dispose();
   }
 }
